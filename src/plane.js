@@ -1,12 +1,12 @@
 'use strict';
 
-function Plane() {};
+function Plane() {}
 
 Plane.prototype.land = function(airport){
-  airport.clearForLanding(this);
+  airport.landPlane(this);
   this._location = airport;
 };
 
 Plane.prototype.takeOff = function() {
-  this._location.clearForTakeOff();
+  this._location.takeOffPlane();
 };
