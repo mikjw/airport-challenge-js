@@ -8,15 +8,19 @@ Airport.prototype.planes = function() {
   return this._hangar; 
 }
 Airport.prototype.landPlane = function(plane) {
-  if(this.isStormy() === true) {
-    throw Error("Cannot take off in stormy weather");
+  if(this.isStormy()) {
+    throw Error("Cannot land due to stormy weather");
   } else {
     this._hangar.push(plane);
   }
 }
 
-Airport.prototype.takeOffPlane = function(plane){
-  this._hangar = [];
+Airport.prototype.takeOffPlane = function(plane) {
+  if(this.isStormy()) {
+    throw Error("Cannot take off due to stormy weather");
+  } else {
+    this._hangar = [];
+  }
 }
 
 Airport.prototype.isStormy = function(){

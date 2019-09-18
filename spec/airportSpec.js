@@ -29,6 +29,11 @@ describe('Airport',function(){
 
   it('will not land plane in stormy weather', function(){
     spyOn(airport, 'isStormy').and.returnValue(true);
-    expect(function(){airport.landPlane(plane)}).toThrow(new Error("Cannot take off in stormy weather"));
+    expect(function(){airport.landPlane(plane)}).toThrow(new Error("Cannot land due to stormy weather"));
+  });
+
+  it('will not take off plane in stormy weather', function(){
+    spyOn(airport, 'isStormy').and.returnValue(true);
+    expect(function(){airport.takeOffPlane(plane)}).toThrow(new Error("Cannot take off due to stormy weather"));
   });
 });
