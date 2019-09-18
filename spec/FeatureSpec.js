@@ -19,4 +19,10 @@ describe('Feature Test:', function() {
     plane.takeOff();
     expect(airport.planes()).not.toContain(plane);
   });
+
+  it('planes cannot land if weather is stormy', function() {
+    spyOn(airport,'isStormy').and.returnValue(true);
+    expect(function() {airport.landPlane(plane)}).toThrow(new Error("Cannot take off in stormy weather"));
+    expect(airport.planes()).not.toContain(plane);
+  });
 });
